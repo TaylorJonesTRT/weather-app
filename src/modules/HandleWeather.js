@@ -1,16 +1,34 @@
 class HandleWeather {
-  constructor() {
-    this.placeholder = 'hi';
-  }
-
   // Data Handling
   async handleData(data) {
-    const json = await data.json();
-    this.placeholder = 'yes';
-    return [json.main.temp, json.main.feels_like, json.main.temp_max, json.main.temp_min, json.main.humidity, json.name, json.weather[0].main];
+    this.json = await data.json();
+    return this.json;
   }
-  // TODO: Need to create a seperate function for extracting all of the data needed rather than how
-  // TODO: the one above is returning all of the data needed.
+
+  async findTemp() {
+    const data = await this.fetchWeather('Richardson');
+    return data.main.temp;
+  }
+
+  async findFeelsLike() {
+    const data = await this.fetchWeather('Richardson');
+    return data.main.feels_like;
+  }
+
+  async findMaxMinTemp() {
+    const data = await this.fetchWeather('Richardson');
+    return [data.main.temp_max, data.main.temp_min];
+  }
+
+  async findWeatherType() {
+    const data = await this.fetchWeather('Richardson');
+    return data.weather.main;
+  }
+
+  async findHumidity() {
+    const data = await this.fetchWeather('Richardson');
+    return data.main.humidity;
+  }
 
   // API Functions
   async fetchWeather(location) {
