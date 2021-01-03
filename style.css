@@ -27,23 +27,26 @@ body {
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1em;
   align-items: center;
   padding: 1em;
-}
-.weather-app-container > div {
-  background: lightblue;
-  padding: 1em;
+  box-shadow: #adadad 1px 0 50px;
 }
 
 .weather-temp {
   color: #000000;
-  font-size: 5em;
+  font-size: 6em;
   margin: 0 auto;
 }
-.other-test {
+.info-area {
   font-size: 1.5em;
-  color: red;
   justify-items: center;
   margin: 0 auto;
+  text-align: center;
+}
+.location {
+  font-size: 1.5em;
+}
+.feels-like,
+.humidity {
+  font-size: 0.8em;
 }
