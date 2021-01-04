@@ -5,35 +5,46 @@ class HandleWeather {
     return this.json;
   }
 
-  async findTemp(data) {
+  findTemp(data) {
     this.data = data;
     return data.main.temp;
   }
 
-  async findFeelsLike(data) {
+  getName(data) {
+    this.data = data;
+    return data.name;
+  }
+
+  findDesc(data) {
+    this.data = data;
+    return data.weather[0].main;
+  }
+
+  findFeelsLike(data) {
     this.data = data;
     return data.main.feels_like;
   }
 
-  async findMaxMinTemp(data) {
+  findMaxMinTemp(data) {
     this.data = data;
     return [data.main.temp_max, data.main.temp_min];
   }
 
-  async findWeatherType(data) {
+  findWeatherType(data) {
     this.data = data;
     return data.weather.main;
   }
 
-  async findHumidity(data) {
+  findHumidity(data) {
     this.data = data;
     return data.main.humidity;
   }
 
   // API Functions
-  async fetchWeather(location) {
+  async fetchWeather(location, units) {
     const locat = location;
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${locat}&APPID=5714462c1533311f2fccfad1cc68c6b9&units=imperial`, { mode: 'cors' });
+    const measurementUnits = units;
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${locat}&APPID=5714462c1533311f2fccfad1cc68c6b9&units=${measurementUnits}`, { mode: 'cors' });
     return this.handleData(response);
   }
 }
