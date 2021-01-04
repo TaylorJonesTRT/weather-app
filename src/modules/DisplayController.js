@@ -3,7 +3,6 @@ class DisplayController {
     this.appDiv = document.getElementById('app');
     this.createContainer();
     this.createWeatherContainer();
-    // this.updateTempText();
     this.createTempArea();
     this.createInfoArea();
   }
@@ -12,6 +11,10 @@ class DisplayController {
     this.containerDiv = document.createElement('div');
     this.containerDiv.id = 'container';
     this.appDiv.appendChild(this.containerDiv);
+  }
+
+  createSearchBar() {
+    
   }
 
   createWeatherContainer() {
@@ -24,29 +27,33 @@ class DisplayController {
     this.tempArea = document.createElement('div');
     this.weatherAppContainer.appendChild(this.tempArea);
     this.tempArea.classList.add('weather-temp');
-    this.tempArea.innerText = '39';
     this.weatherAppContainer.appendChild(this.tempArea);
   }
 
   createInfoArea() {
     this.infoArea = document.createElement('div');
     this.infoArea.classList.add('info-area');
-    this.weatherAppContainer.appendChild(this.infoArea);
     this.nameDiv = document.createElement('div');
     this.nameDiv.classList.add('location');
-    this.nameDiv.innerText = 'Richardson';
     this.feelsLikeDiv = document.createElement('div');
     this.feelsLikeDiv.classList.add('feels-like');
-    this.feelsLikeDiv.innerText = 'Feels like: 39';
+    this.highLowDiv = document.createElement('div');
+    this.highLowDiv.classList.add('high-low');
     this.humidityDiv = document.createElement('div');
     this.humidityDiv.classList.add('humidity');
-    this.humidityDiv.innerText = 'Humidity: 45%';
+    this.weatherAppContainer.appendChild(this.infoArea);
     this.infoArea.appendChild(this.nameDiv);
     this.infoArea.appendChild(this.feelsLikeDiv);
+    this.infoArea.appendChild(this.highLowDiv);
     this.infoArea.appendChild(this.humidityDiv);
   }
 
-  updateText() {
+  updateText(temp, name, feelsLike, highLow, humidity) {
+    this.tempArea.innerText = `${temp}°`;
+    this.nameDiv.innerText = name;
+    this.feelsLikeDiv.innerText = `Feels like: ${feelsLike}°`;
+    this.highLowDiv.innerText = `High: ${highLow[0]}° | Low: ${highLow[1]}°`;
+    this.humidityDiv.innerText = `${humidity}°`;
   }
 }
 

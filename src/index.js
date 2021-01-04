@@ -1,6 +1,5 @@
-import DisplayController from './modules/DisplayController';
 import HandleWeather from './modules/HandleWeather';
+import DisplayController from './modules/DisplayController';
 
-window.displayContoller = new DisplayController();
-
-// TODO: Change this file into a class
+const display = new DisplayController();
+const handleWeather = new HandleWeather();

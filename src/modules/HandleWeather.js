@@ -1,32 +1,32 @@
 class HandleWeather {
   // Data Handling
-  async handleData(data) {
-    this.json = await data.json();
+  async handleData(apiData) {
+    this.json = await apiData.json();
     return this.json;
   }
 
-  async findTemp() {
-    const data = await this.fetchWeather('Richardson');
+  async findTemp(data) {
+    this.data = data;
     return data.main.temp;
   }
 
-  async findFeelsLike() {
-    const data = await this.fetchWeather('Richardson');
+  async findFeelsLike(data) {
+    this.data = data;
     return data.main.feels_like;
   }
 
-  async findMaxMinTemp() {
-    const data = await this.fetchWeather('Richardson');
+  async findMaxMinTemp(data) {
+    this.data = data;
     return [data.main.temp_max, data.main.temp_min];
   }
 
-  async findWeatherType() {
-    const data = await this.fetchWeather('Richardson');
+  async findWeatherType(data) {
+    this.data = data;
     return data.weather.main;
   }
 
-  async findHumidity() {
-    const data = await this.fetchWeather('Richardson');
+  async findHumidity(data) {
+    this.data = data;
     return data.main.humidity;
   }
 
